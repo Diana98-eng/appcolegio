@@ -1,0 +1,44 @@
+﻿@model appcolegio.Models.Notum
+
+@{
+    ViewData["Title"] = "Crear Nota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registrar Nota</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nota" class="control-label"></label>
+                <input asp-for="Nota" class="form-control" />
+                <span asp-validation-for="Nota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstudiante" class="control-label"></label>
+                <hr/>
+                <select asp-for="IdEstudiante" class ="form-control" asp-items="ViewBag.IdEstudiante"></select>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <label asp-for="IdMateria" class="control-label"></label>
+                <hr />
+                <select asp-for="IdMateria" class ="form-control" asp-items="ViewBag.IdMateria"></select>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning">Guardar Nota</button>
+
+                <a asp-action="Index" asp-controller="Notums" class="btn btn-dark">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista</a>
+</div>
+

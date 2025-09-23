@@ -1,0 +1,45 @@
+﻿@model appcolegio.Models.Notum
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Editar </h1>
+
+<h4>Notas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nota" class="control-label"></label>
+                <input asp-for="Nota" class="form-control" />
+                <span asp-validation-for="Nota" class="text-danger"></span>
+            </div>
+                <hr/>
+            <div class="form-group">
+                <label asp-for="IdEstudiante" class="control-label"></label>
+                <select asp-for="IdEstudiante" class="form-control" asp-items="ViewBag.IdEstudiante"></select>
+                <span asp-validation-for="IdEstudiante" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label asp-for="IdMateria" class="control-label"></label>
+                <select asp-for="IdMateria" class="form-control" asp-items="ViewBag.IdMateria"></select>
+                <span asp-validation-for="IdMateria" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+

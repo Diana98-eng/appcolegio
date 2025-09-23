@@ -1,0 +1,51 @@
+﻿@model List<appcolegio.Models.Notum>  
+@{
+    ViewData["Title"] = "Notas Estudiantes";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Información Academica</h1>
+</div>
+    <div class="card-header">
+        <h5>Lista de estudiantes</h5>
+    </div>
+    <div class="card-body">
+     <a class="btn btn-success btn-sm" asp-action="create" asp-controller="Estudiantes">crear nuevo Estudiante</a>
+    <a class="btn btn-success btn-sm" asp-action="create" asp-controller="Materiums">crear nuevo Materia</a>
+    <a class="btn btn-success btn-sm" asp-action="create" asp-controller="Notums" >crear nueva Nota</a>
+
+     <hr/>
+
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                <th>id</th>
+                 <th >Nombre</th>
+                 <th>apellido</th>
+                 <th>Materia</th>
+                 <th>nota</th>
+                 <th></th>
+                
+             </tr>
+         </thead>
+         <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.oEstudiante?.Id</td>
+                        <td>@item.oEstudiante?.Nombre</td>
+                        <td>@item.oEstudiante?.Apellido</td>
+                        <td>@item.oMateria?.NomMateria</td>
+                        <td>@item.Nota</td>
+                        <td>
+                           
+                            <a  asp-action="Editar" asp-route-id ="@item.Id"  class=" btn btn-warning btn-sm">Editar</a>
+                            <form asp-action="Eliminar" asp-controller="home" asp-route-id="@item.Id" method="post" style="display:inline">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm ('¿seguro quieres eliminar el estudiante?');">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+     </table>
+    </div>
