@@ -19,11 +19,8 @@ namespace appcolegio.Controllers
 
         public IActionResult Index()
         {
-            List<Notum> lista = _DBcontext.Nota
-                .Include(e => e.oEstudiante)
-                .Include(m => m.oMateria)
-                .ToList();
-            return View(lista);
+            
+            return View();
         }
         [HttpGet]
         public IActionResult Estudiante_Detalle(int? id)

@@ -4,48 +4,105 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Información Academica</h1>
+    <h1 class="display-4 titulo">Menú Principal</h1>
 </div>
-    <div class="card-header">
-        <h5>Lista de estudiantes</h5>
-    </div>
-    <div class="card-body">
-     <a class="btn btn-success btn-sm" asp-action="create" asp-controller="Estudiantes">crear nuevo Estudiante</a>
-    <a class="btn btn-success btn-sm" asp-action="create" asp-controller="Materiums">crear nuevo Materia</a>
-    <a class="btn btn-success btn-sm" asp-action="create" asp-controller="Notums" >crear nueva Nota</a>
 
-     <hr/>
-
-     <table class="table table-striped">
-         <thead>
-             <tr>
-                <th>id</th>
-                 <th >Nombre</th>
-                 <th>apellido</th>
-                 <th>Materia</th>
-                 <th>nota</th>
-                 <th></th>
-                
-             </tr>
-         </thead>
-         <tbody>
-                @foreach(var item in Model)
-                {
-                    <tr>
-                        <td>@item.oEstudiante?.Id</td>
-                        <td>@item.oEstudiante?.Nombre</td>
-                        <td>@item.oEstudiante?.Apellido</td>
-                        <td>@item.oMateria?.NomMateria</td>
-                        <td>@item.Nota</td>
-                        <td>
-                           
-                            <a  asp-action="Editar" asp-route-id ="@item.Id"  class=" btn btn-warning btn-sm">Editar</a>
-                            <form asp-action="Eliminar" asp-controller="home" asp-route-id="@item.Id" method="post" style="display:inline">
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm ('¿seguro quieres eliminar el estudiante?');">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-     </table>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-3">
+        <div class="card text-center shadow-lg">
+            <div class="card-body">
+                <img src="~/imagenes/estudiante.jpg" class="card-img-top" style="width:150px" />
+                <h5 class="card-title">Estudiantes</h5>
+                <a href="@Url.Action("Index", "Estudiantes")" class="btn btn-primary">Ir</a>
+            </div>
+        </div>
     </div>
+
+    <div class="col-md-3">
+        <div class="card text-center shadow-lg">
+            <div class="card-body">
+                <img src="~/imagenes/materia.jpg" class="card-img-top" style="width:200px" />
+                <h5 class="card-title">Materias</h5>
+                <a href="@Url.Action("Index", "Materiums")" class="btn btn-success">Ir</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center shadow-lg">
+            <div class="card-body">
+                <img src="~/imagenes/notas.jpg" class="card-img-top" style="width:220px" />
+                <h5 class="card-title">Notas</h5>
+                <a href="@Url.Action("Index", "Notums")" class="btn btn-warning">Ir</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    body, html {
+        height: 100%;
+        padding: 0;
+        height: 100%;
+        background-image: url('@Url.Content("~/imagenes/colegio.jpg")');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+        background: rgba(255, 255, 255, 0.9);
+        color: blanchedalmond; 
+    }
+
+    .titulo {
+        margin-top: 50px;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.7); 
+    }
+
+    body {
+        background: url('@Url.Content("~/imagenes/colegio.jpg")') no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+
+    .menu-container {
+        text-align: center;
+        padding-top: 50px;
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titulo {
+        font-weight: bold;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        color: brown;
+    }
+
+    .row {
+        margin-top: 50px;
+    }
+
+    .card {
+        height: 400px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+        .card:hover {
+            max-height: 200px; 
+            object-fit: cover;
+        }
+    .card-title {
+        margin-top: 15px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: black;
+    }
+
+   
+</style>
+

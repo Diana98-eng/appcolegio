@@ -24,7 +24,21 @@
             @Html.DisplayFor(model => model.Apellido)
         </dd>
     </dl>
+    <dt class="col-sm-2">Materias</dt>
+    <dd class="col-sm-10">
 
+        @foreach (var nota in Model.Nota)
+        {
+            @nota.oMateria.NomMateria
+        }
+    </dd>
+    <dt class="col-sm-2">Notas</dt>
+    <dd class="col-sm-10">
+
+        @foreach (var nota in Model.Nota)
+        {
+            <div>@nota.Nota</div>   
+        }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |

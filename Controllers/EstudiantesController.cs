@@ -33,6 +33,8 @@ namespace appcolegio.Controllers
             }
 
             var estudiante = await _context.Estudiantes
+                .Include(e => e.Nota) // Incluir las notas relacionadas 
+                .ThenInclude(n => n.oMateria)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (estudiante == null)
             {
